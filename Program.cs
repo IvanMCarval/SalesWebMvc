@@ -4,7 +4,8 @@ using SalesWebMvc.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<SalesWebMvcContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("SalesWebMvcContext")));
+    options.UseMySql("server=localhost;userid=developer;password=My2597SQL;database=saleswebmvcappdb", ServerVersion.Parse("8.0.24-mysql"), builder =>
+builder.MigrationsAssembly("SalesWebMvc")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
