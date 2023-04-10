@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SalesWebMvc.Services;
 
 namespace SalesWebMvc.Controllers
 {
@@ -12,14 +13,17 @@ namespace SalesWebMvc.Controllers
     {
         private readonly ILogger<SellersController> _logger;
 
-        public SellersController(ILogger<SellersController> logger)
+        private readonly SellerService _sellerService;
+
+        public SellersController(SellerService sellerService)
         {
-            _logger = logger;
+            _sellerService = sellerService;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var list = _sellerService.FindAll();
+            return View(list);
         }
 
         public IActionResult Error()
