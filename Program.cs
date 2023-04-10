@@ -13,6 +13,7 @@ builder.MigrationsAssembly("SalesWebMvc")));
 //Register service on injection dependency system of application
 builder.Services.AddScoped<SeedingService>();
 builder.Services.AddScoped<SellerService>();
+builder.Services.AddScoped<DepartmentService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
